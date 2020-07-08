@@ -18,7 +18,9 @@ module.exports = {
     watchContentBase: true,
   },
   plugins: [
-    new CleanWebpackPlugin(buildPath),
+    new CleanWebpackPlugin({
+      output: buildPath
+    }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: 'index.html',
