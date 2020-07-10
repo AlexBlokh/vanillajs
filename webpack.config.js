@@ -28,6 +28,9 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: "src/subpath/index.html",
+      inject: true,
+      hash: true,
+      chunks: ["index"],
       filename: "subpath.html",
     }),
   ],
