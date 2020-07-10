@@ -1,9 +1,9 @@
-const webpack = require('webpack')
+const webpack = require("webpack");
 const path = require("path");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const buildPath = path.resolve(__dirname, 'dist');
+const buildPath = path.resolve(__dirname, "dist");
 
 module.exports = {
   mode: "none",
@@ -19,12 +19,16 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin({
-      output: buildPath
+      output: buildPath,
     }),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      filename: 'index.html',
-      hash: true
-    })
-  ]
+      template: "src/index.html",
+      filename: "index.html",
+      hash: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: "src/subpath/index.html",
+      filename: "subpath.html",
+    }),
+  ],
 };
