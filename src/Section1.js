@@ -1,10 +1,47 @@
-import { html } from "https://unpkg.com/lit-html?module";
+import { LitElement, css, html } from "lit-element";
+import defaultCss from './default-css'
 
-// Define a template
-const MyTemplate = (name) => html`
-  <div>ASD</div>
-  <p>Hello ${name}</p>
-  <div>ASD</div>
-`;
+export default class Section1 extends LitElement {
+  static get styles() {
+    return [defaultCss, css``];
+  }
 
-export default MyTemplate;
+  constructor() {
+    super();
+  }
+
+  set callback(callback) {
+    this._callback = callback;
+  }
+
+  set name(name) {
+    this._name = name;
+    this.render();
+  }
+
+  // connectedCallback(){
+  // this.render();
+  // }
+
+  // static get styles() {
+  //   return css`
+  //     div { color: red; }
+  //   `;
+  // }
+
+  render() {
+    return html`
+      <div>
+        <p>Hello ${this._name}</p>
+        <button @click=${this._callback}>Click me</button>
+        <button @click=${this.cb}>Click me</button>
+      </div>
+    `;
+  }
+
+  cb(event) {
+    this._callback(event);
+  }
+}
+
+window.customElements.define("text-button-section", Section1);
