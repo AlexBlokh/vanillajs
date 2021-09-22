@@ -4,16 +4,16 @@ import axios from "axios";
 import Section1 from "./Section1.js";
 import "./index.css";
 
-const tbs = new Section1();
+
 const clickListener = async (event) => {
   console.log("clicked");
   tbs.name = "clicked!";
 
-  axios.get("https://api.ukrdisk.com/legacy/rims?brand=Kosei").then((data) => {
-    console.log(JSON.stringify(data));
-  });
+  const data = await axios.get("https://api.ukrdisk.com/legacy/rims?brand=Kosei");
+  console.log(JSON.stringify(data));
 };
 
+const tbs = new Section1();
 tbs.callback = clickListener;
 
 const style = css`
